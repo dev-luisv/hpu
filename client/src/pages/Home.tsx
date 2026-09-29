@@ -113,10 +113,8 @@ export default function Home() {
           <div className="hero-visual">
             <div className="hero-image-frame">
               <button className="image-trigger image-trigger--hero" type="button" onClick={() => openImage(heroImage, "Portada HPU", "Sillón de metal · imagen principal")} aria-label="Ampliar imagen de portada"><img src={heroImage} alt="Sillón de metal tejido fabricado por HPU" onError={keepImageVisible} /><span className="image-zoom-hint"><Maximize2 size={15} /> Ver imagen</span></button>
-              <div className="image-stamp"><span>HPU</span><small>DESDE<br />EL TALLER</small></div>
             </div>
             <div className="hero-side-note"><span className="vertical-label">TUS SUEÑOS EN METAL</span><span className="side-rule" /></div>
-            <div className="hero-index">01 <span>/</span> 04</div>
           </div>
         </div>
         <div className="hero-bottom container"><span>Desliza para descubrir</span><span className="hero-bottom-line" /><span>MX · QRO</span></div>

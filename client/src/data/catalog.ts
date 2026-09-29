@@ -41,7 +41,7 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "bases",
     accent: "olive",
-    imageUrl: baseCamaFixed,
+    imageUrl: asset("/assets/hpu-fixed/base-cama.jpg"),
   },
   {
     id: "mesa-centro",
@@ -51,7 +51,7 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "centro",
     accent: "copper",
-    imageUrl: mesaCentroFixed,
+    imageUrl: asset("/assets/hpu-fixed/mesa-centro.jpg"),
   },
   {
     id: "mesa-comedor",
@@ -61,7 +61,7 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "comedor",
     accent: "stone",
-    imageUrl: mesaComedorFixed,
+    imageUrl: asset("/assets/hpu-fixed/mesa-comedor.jpg"),
   },
   {
     id: "lampara-metal",
@@ -71,7 +71,7 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "lamparas",
     accent: "ink",
-    imageUrl: lamparaMetalFixed,
+    imageUrl: asset("/assets/hpu-fixed/lampara-metal.jpg"),
   },
 ];
 
