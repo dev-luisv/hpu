@@ -1,0 +1,7 @@
+{
+  "routes": [
+    { "path": "/", "title": "HPU — Tus sueños en metal" },
+    { "path": "/admin", "title": "HPU — Panel de administración" },
+    { "path": "/404", "title": "Página no encontrada" }
+  ]
+}

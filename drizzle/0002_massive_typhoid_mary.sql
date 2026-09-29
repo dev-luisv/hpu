@@ -1,0 +1,1 @@
+ALTER TABLE `media_assets` ADD `slot` varchar(80) DEFAULT 'project' NOT NULL;
