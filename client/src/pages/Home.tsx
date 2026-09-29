@@ -3,7 +3,6 @@ import {
   ArrowDown,
   ArrowUpRight,
   Check,
-  ChevronLeft,
   ChevronRight,
   Maximize2,
   MapPin,
@@ -13,7 +12,6 @@ import {
   X,
 } from "lucide-react";
 import { categories, contact, products, projectPhotos } from "@/data/catalog";
-import { trpc } from "@/lib/trpc";
 
 function keepImageVisible(event: SyntheticEvent<HTMLImageElement>) {
   const image = event.currentTarget;
@@ -21,7 +19,7 @@ function keepImageVisible(event: SyntheticEvent<HTMLImageElement>) {
   image.dataset.fallback = "true";
   image.src = image.src.includes("-upscaled.webp")
     ? image.src.replace("-upscaled.webp", "-enhanced.jpg")
-    : "/assets/hpu/facebook-7-enhanced.jpg";
+    : `${import.meta.env.BASE_URL}assets/hpu/facebook-7-enhanced.jpg`;
 }
 
 function formatPrice(value: string) {
@@ -54,21 +52,12 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [lightbox, setLightbox] = useState<{ src: string; title: string; detail?: string } | null>(null);
-  const catalogQuery = trpc.catalog.public.useQuery(undefined, { retry: false });
-  const liveCategories = catalogQuery.data?.categories?.length
-    ? catalogQuery.data.categories.map((category) => ({ id: category.slug, label: category.label, number: category.number, note: category.note }))
-    : categories;
-  const liveProducts = catalogQuery.data?.items?.length
-    ? catalogQuery.data.items.map((item) => ({ id: String(item.id), slug: item.slug, name: item.name, eyebrow: item.eyebrow, description: item.description, price: item.priceLabel, category: item.categorySlug, accent: item.accent, imageUrl: item.imageUrl }))
-    : products;
-  const liveMedia = catalogQuery.data?.media ?? [];
-  const heroImage = liveMedia.find((asset) => asset.slot === "hero")?.url ?? "/assets/hpu/facebook-7-upscaled.webp";
-  const customImage = liveMedia.find((asset) => asset.slot === "custom")?.url ?? "/assets/hpu/facebook-6-upscaled.webp";
-  const showroomImage = liveMedia.find((asset) => asset.slot === "showroom")?.url ?? "/assets/hpu/facebook-1-upscaled.webp";
-  const galleryMedia = liveMedia.filter((asset) => asset.slot.startsWith("project-") && asset.isPublished === 1);
-  const liveProjectPhotos = galleryMedia.length
-    ? galleryMedia.map((asset, index) => ({ src: asset.url, title: asset.title, detail: asset.detail, tone: index % 3 === 0 ? "wide" : index % 3 === 1 ? "tall" : "square", cutout: asset.url.includes("-cutout"), softened: asset.url.includes("gallery-") && !asset.url.includes("lamparas") }))
-    : projectPhotos;
+  const liveCategories = categories;
+  const liveProducts = products;
+  const heroImage = `${import.meta.env.BASE_URL}assets/hpu/facebook-7-upscaled.webp`;
+  const customImage = `${import.meta.env.BASE_URL}assets/hpu/facebook-6-upscaled.webp`;
+  const showroomImage = `${import.meta.env.BASE_URL}assets/hpu/facebook-1-upscaled.webp`;
+  const liveProjectPhotos = projectPhotos;
   const primaryProductSlugs = new Set(["base-cama", "mesa-centro", "mesa-comedor", "lampara-metal"]);
   const filteredProducts = activeCategory === "Todos"
     ? liveProducts.filter((product) => primaryProductSlugs.has(String("slug" in product ? product.slug : product.id)))
