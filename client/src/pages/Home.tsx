@@ -12,6 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { categories, contact, products, projectPhotos } from "@/data/catalog";
+import { heroFixed } from "@/assets/fixed/fixedImages";
 
 function keepImageVisible(event: SyntheticEvent<HTMLImageElement>) {
   const image = event.currentTarget;
@@ -54,7 +55,7 @@ export default function Home() {
   const [lightbox, setLightbox] = useState<{ src: string; title: string; detail?: string } | null>(null);
   const liveCategories = categories;
   const liveProducts = products;
-  const heroImage = `${import.meta.env.BASE_URL}assets/hpu/facebook-7-upscaled.webp`;
+  const heroImage = heroFixed;
   const customImage = `${import.meta.env.BASE_URL}assets/hpu/facebook-6-upscaled.webp`;
   const showroomImage = `${import.meta.env.BASE_URL}assets/hpu/facebook-1-upscaled.webp`;
   const liveProjectPhotos = projectPhotos;
