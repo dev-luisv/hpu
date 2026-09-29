@@ -35,13 +35,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Restore fixed HPU images
-        run: |
-          mkdir -p client/public/assets/hpu-fixed
-          cat .github/assets/hpu-fixed/part-*.b64 | base64 --decode > /tmp/hpu-fixed.zip
-          echo "200fb65be098cca8efa90ea4868487e2e3a6201cea23eb641af7f32ebd7918a8  /tmp/hpu-fixed.zip" | sha256sum -c -
-          unzip -o /tmp/hpu-fixed.zip -d client/public/assets/hpu-fixed
-
       - name: Build static site
         run: pnpm run build:static
 
