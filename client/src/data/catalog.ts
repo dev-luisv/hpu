@@ -69,7 +69,7 @@ export const products: CatalogItem[] = [
   },
 ];
 
-const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\\/+/, "")}`;
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
 export const projectPhotos: ProjectPhoto[] = [
   { src: asset("/assets/hpu/facebook-7-upscaled.webp"), title: "Sillón tejido", detail: "Estructura y comodidad", tone: "wide" },
