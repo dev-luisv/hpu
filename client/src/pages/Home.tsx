@@ -12,7 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { categories, contact, products, projectPhotos } from "@/data/catalog";
-import { heroFixed } from "@/assets/fixed/fixedImages";
+import { heroFixed } from "@/assets/hpu-fixed/fixedImages";
 
 function keepImageVisible(event: SyntheticEvent<HTMLImageElement>) {
   const image = event.currentTarget;
