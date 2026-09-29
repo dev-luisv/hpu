@@ -69,13 +69,15 @@ export const products: CatalogItem[] = [
   },
 ];
 
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\\/+/, "")}`;
+
 export const projectPhotos: ProjectPhoto[] = [
-  { src: "/assets/hpu/facebook-7-upscaled.webp", title: "Sillón tejido", detail: "Estructura y comodidad", tone: "wide" },
-  { src: "/assets/hpu/facebook-5-upscaled.webp", title: "Jardineras", detail: "Piezas para exterior", tone: "tall" },
-  { src: "/assets/hpu/facebook-1-upscaled.webp", title: "Rueda botánica", detail: "Metal convertido en detalle", tone: "square" },
-  { src: "/assets/hpu/facebook-6-upscaled.webp", title: "Soportes", detail: "Composición y equilibrio", tone: "square" },
-  { src: "/assets/hpu/facebook-8-upscaled.webp", title: "Arte en metal", detail: "Trabajo especial", tone: "tall" },
-  { src: "/assets/hpu/facebook-3-upscaled.webp", title: "Pieza de exhibición", detail: "Fabricación a medida", tone: "wide" },
+  { src: asset("/assets/hpu/facebook-7-upscaled.webp"), title: "Sillón tejido", detail: "Estructura y comodidad", tone: "wide" },
+  { src: asset("/assets/hpu/facebook-5-upscaled.webp"), title: "Jardineras", detail: "Piezas para exterior", tone: "tall" },
+  { src: asset("/assets/hpu/facebook-1-upscaled.webp"), title: "Rueda botánica", detail: "Metal convertido en detalle", tone: "square" },
+  { src: asset("/assets/hpu/facebook-6-upscaled.webp"), title: "Soportes", detail: "Composición y equilibrio", tone: "square" },
+  { src: asset("/assets/hpu/facebook-8-upscaled.webp"), title: "Arte en metal", detail: "Trabajo especial", tone: "tall" },
+  { src: asset("/assets/hpu/facebook-3-upscaled.webp"), title: "Pieza de exhibición", detail: "Fabricación a medida", tone: "wide" },
 ];
 
 export const contact = {
