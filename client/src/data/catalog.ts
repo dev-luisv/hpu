@@ -78,12 +78,17 @@ export const products: CatalogItem[] = [
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
 export const projectPhotos: ProjectPhoto[] = [
-  { src: asset("/assets/hpu/facebook-7-upscaled.webp"), title: "Sillón tejido", detail: "Estructura y comodidad", tone: "wide" },
-  { src: asset("/assets/hpu/facebook-5-upscaled.webp"), title: "Jardineras", detail: "Piezas para exterior", tone: "tall" },
-  { src: asset("/assets/hpu/facebook-1-upscaled.webp"), title: "Rueda botánica", detail: "Metal convertido en detalle", tone: "square" },
-  { src: asset("/assets/hpu/facebook-6-upscaled.webp"), title: "Soportes", detail: "Composición y equilibrio", tone: "square" },
-  { src: asset("/assets/hpu/facebook-8-upscaled.webp"), title: "Arte en metal", detail: "Trabajo especial", tone: "tall" },
-  { src: asset("/assets/hpu/facebook-3-upscaled.webp"), title: "Pieza de exhibición", detail: "Fabricación a medida", tone: "wide" },
+  { src: asset("/assets/hpu-fixed/projects/repisa-circular.png"), title: "Repisa circular", detail: "Metal con presencia", tone: "wide" },
+  { src: asset("/assets/hpu-fixed/projects/detalle-madera-metal.png"), title: "Detalle de madera y metal", detail: "Acabados y contraste", tone: "square" },
+  { src: asset("/assets/hpu-fixed/projects/cruz-decorativa.png"), title: "Cruz decorativa", detail: "Pieza especial", tone: "tall" },
+  { src: asset("/assets/hpu-fixed/projects/jardineras.webp"), title: "Jardineras", detail: "Piezas para exterior", tone: "wide" },
+  { src: asset("/assets/hpu-fixed/projects/estructura-colorida.png"), title: "Estructura colorida", detail: "Trabajo especial", tone: "square" },
+  { src: asset("/assets/hpu-fixed/projects/lamparas-geometricas.png"), title: "Lámparas geométricas", detail: "Iluminación decorativa", tone: "tall" },
+  { src: asset("/assets/hpu-fixed/projects/pieza-exhibicion.webp"), title: "Pieza de exhibición", detail: "Fabricación a medida", tone: "square" },
+  { src: asset("/assets/hpu-fixed/projects/arte-metal.webp"), title: "Arte en metal", detail: "Diseño y oficio", tone: "tall" },
+  { src: asset("/assets/hpu-fixed/projects/soportes.webp"), title: "Soportes", detail: "Composición y equilibrio", tone: "square" },
+  { src: asset("/assets/hpu-fixed/projects/rueda-botanica.webp"), title: "Rueda botánica", detail: "Metal convertido en detalle", tone: "wide" },
+  { src: asset("/assets/hpu-fixed/projects/sillon-tejido.webp"), title: "Sillón tejido", detail: "Estructura y comodidad", tone: "square" },
 ];
 
 export const contact = {
