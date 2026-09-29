@@ -1,3 +1,5 @@
+import { baseCamaFixed, mesaCentroFixed, mesaComedorFixed, lamparaMetalFixed } from "@/assets/fixed/fixedImages";
+
 export type CatalogItem = {
   id: string;
   name: string;
@@ -39,6 +41,7 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "bases",
     accent: "olive",
+    imageUrl: baseCamaFixed,
   },
   {
     id: "mesa-centro",
@@ -48,6 +51,7 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "centro",
     accent: "copper",
+    imageUrl: mesaCentroFixed,
   },
   {
     id: "mesa-comedor",
@@ -57,6 +61,7 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "comedor",
     accent: "stone",
+    imageUrl: mesaComedorFixed,
   },
   {
     id: "lampara-metal",
@@ -66,6 +71,7 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "lamparas",
     accent: "ink",
+    imageUrl: lamparaMetalFixed,
   },
 ];
 
