@@ -18,6 +18,8 @@ export type ProjectPhoto = {
   softened?: boolean;
 };
 
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\\/+/, "")}`;
+
 /**
  * Edita este archivo para cambiar nombres, textos, precios y fotografías del catálogo.
  * Los precios pueden quedarse como "Cotizar" o "Próximamente" mientras se definen.
@@ -39,6 +41,7 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "bases",
     accent: "olive",
+    imageUrl: asset("/assets/hpu-fixed/base-cama.jpg"),
   },
   {
     id: "mesa-centro",
@@ -48,6 +51,7 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "centro",
     accent: "copper",
+    imageUrl: asset("/assets/hpu-fixed/mesa-centro.jpg"),
   },
   {
     id: "mesa-comedor",
@@ -57,6 +61,7 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "comedor",
     accent: "stone",
+    imageUrl: asset("/assets/hpu-fixed/mesa-comedor.jpg"),
   },
   {
     id: "lampara-metal",
@@ -66,16 +71,114 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "lamparas",
     accent: "ink",
+    imageUrl: asset("/assets/hpu-fixed/lampara-metal.jpg"),
+  },
+  {
+    id: "consola-dorada",
+    name: "Consola dorada",
+    eyebrow: "Muebles a medida",
+    description: "Consola de herrería con cubierta de vidrio y acabado dorado para recibidores y espacios especiales.",
+    price: "Cotizar",
+    category: "medida",
+    accent: "copper",
+    imageUrl: asset("/assets/hpu/catalog/consola-dorada.webp"),
+  },
+  {
+    id: "mesa-auxiliar-madera",
+    name: "Mesa auxiliar de madera",
+    eyebrow: "Sala",
+    description: "Mesa auxiliar con estructura de metal y cubierta de madera para acompañar cualquier rincón.",
+    price: "Cotizar",
+    category: "centro",
+    accent: "olive",
+    imageUrl: asset("/assets/hpu/catalog/mesa-auxiliar-madera.webp"),
+  },
+  {
+    id: "mesa-comedor-negra",
+    name: "Mesa de comedor negra",
+    eyebrow: "Comedor",
+    description: "Estructura de líneas limpias para crear un comedor contemporáneo y duradero.",
+    price: "Cotizar",
+    category: "comedor",
+    accent: "ink",
+    imageUrl: asset("/assets/hpu/catalog/mesa-comedor-negra.webp"),
+  },
+  {
+    id: "aplique-metal",
+    name: "Apliques de metal",
+    eyebrow: "Iluminación",
+    description: "Luminarias artesanales de metal que aportan carácter y textura a tus muros.",
+    price: "Cotizar",
+    category: "lamparas",
+    accent: "copper",
+    imageUrl: asset("/assets/hpu/catalog/aplique-metal-1.webp"),
+  },
+  {
+    id: "estructura-evento",
+    name: "Estructura para eventos",
+    eyebrow: "Muebles a medida",
+    description: "Estructuras metálicas decorativas para celebraciones, jardines y montajes especiales.",
+    price: "Cotizar",
+    category: "medida",
+    accent: "copper",
+    imageUrl: asset("/assets/hpu/catalog/estructura-evento-dorada.webp"),
+  },
+  {
+    id: "mesa-centro-mosaico",
+    name: "Mesa de centro con mosaico",
+    eyebrow: "Sala",
+    description: "Mesa de centro con estructura metálica y cubierta de mosaico, pensada para ser el punto focal de la sala.",
+    price: "Cotizar",
+    category: "centro",
+    accent: "stone",
+    imageUrl: asset("/assets/hpu/catalog/mesa-centro-mosaico-1.webp"),
+  },
+  {
+    id: "consola-azul",
+    name: "Consola azul",
+    eyebrow: "Muebles a medida",
+    description: "Consola metálica con acabado azul y repisas para exhibir objetos con personalidad.",
+    price: "Cotizar",
+    category: "medida",
+    accent: "ink",
+    imageUrl: asset("/assets/hpu/catalog/consola-azul.webp"),
+  },
+  {
+    id: "barandal-decorativo",
+    name: "Barandal decorativo",
+    eyebrow: "Muebles a medida",
+    description: "Diseño de herrería ornamental para transformar escaleras, muros y espacios arquitectónicos.",
+    price: "Cotizar",
+    category: "medida",
+    accent: "ink",
+    imageUrl: asset("/assets/hpu/catalog/barandal-decorativo.webp"),
   },
 ];
 
 export const projectPhotos: ProjectPhoto[] = [
-  { src: "/assets/hpu/facebook-7-upscaled.webp", title: "Sillón tejido", detail: "Estructura y comodidad", tone: "wide" },
-  { src: "/assets/hpu/facebook-5-upscaled.webp", title: "Jardineras", detail: "Piezas para exterior", tone: "tall" },
-  { src: "/assets/hpu/facebook-1-upscaled.webp", title: "Rueda botánica", detail: "Metal convertido en detalle", tone: "square" },
-  { src: "/assets/hpu/facebook-6-upscaled.webp", title: "Soportes", detail: "Composición y equilibrio", tone: "square" },
-  { src: "/assets/hpu/facebook-8-upscaled.webp", title: "Arte en metal", detail: "Trabajo especial", tone: "tall" },
-  { src: "/assets/hpu/facebook-3-upscaled.webp", title: "Pieza de exhibición", detail: "Fabricación a medida", tone: "wide" },
+  { src: asset("/assets/hpu-fixed/projects/repisa-circular.png"), title: "Repisa circular", detail: "Metal con presencia", tone: "wide" },
+  { src: asset("/assets/hpu-fixed/projects/detalle-madera-metal.png"), title: "Detalle de madera y metal", detail: "Acabados y contraste", tone: "square" },
+  { src: asset("/assets/hpu-fixed/projects/cruz-decorativa.png"), title: "Cruz decorativa", detail: "Pieza especial", tone: "tall" },
+  { src: asset("/assets/hpu-fixed/projects/jardineras.webp"), title: "Jardineras", detail: "Piezas para exterior", tone: "wide" },
+  { src: asset("/assets/hpu-fixed/projects/estructura-colorida.png"), title: "Estructura colorida", detail: "Trabajo especial", tone: "square" },
+  { src: asset("/assets/hpu-fixed/projects/lamparas-geometricas.png"), title: "Lámparas geométricas", detail: "Iluminación decorativa", tone: "tall" },
+  { src: asset("/assets/hpu-fixed/projects/pieza-exhibicion.webp"), title: "Pieza de exhibición", detail: "Fabricación a medida", tone: "square" },
+  { src: asset("/assets/hpu-fixed/projects/arte-metal.webp"), title: "Arte en metal", detail: "Diseño y oficio", tone: "tall" },
+  { src: asset("/assets/hpu-fixed/projects/soportes.webp"), title: "Soportes", detail: "Composición y equilibrio", tone: "square" },
+  { src: asset("/assets/hpu-fixed/projects/rueda-botanica.webp"), title: "Rueda botánica", detail: "Metal convertido en detalle", tone: "wide" },
+  { src: asset("/assets/hpu-fixed/projects/sillon-tejido.webp"), title: "Sillón tejido", detail: "Estructura y comodidad", tone: "square" },
+  { src: asset("/assets/hpu/catalog/consola-dorada.webp"), title: "Consola dorada", detail: "Herrería y vidrio · recibidor", tone: "wide" },
+  { src: asset("/assets/hpu/catalog/mesa-auxiliar-madera.webp"), title: "Mesa auxiliar de madera", detail: "Metal y madera · sala", tone: "square" },
+  { src: asset("/assets/hpu/catalog/cruz-madera-metal.webp"), title: "Cruz de madera y metal", detail: "Decoración artesanal", tone: "tall" },
+  { src: asset("/assets/hpu/catalog/mesa-comedor-negra.webp"), title: "Mesa de comedor negra", detail: "Comedor · estructura HPU", tone: "wide" },
+  { src: asset("/assets/hpu/catalog/aplique-metal-1.webp"), title: "Aplique de metal", detail: "Iluminación artesanal · vista 1", tone: "square" },
+  { src: asset("/assets/hpu/catalog/aplique-metal-2.webp"), title: "Aplique de metal", detail: "Iluminación artesanal · vista 2", tone: "tall" },
+  { src: asset("/assets/hpu/catalog/estructura-evento-dorada.webp"), title: "Estructura para eventos", detail: "Herrería decorativa · exterior", tone: "wide" },
+  { src: asset("/assets/hpu/catalog/mesa-centro-mosaico-1.webp"), title: "Mesa de centro con mosaico", detail: "Sala · vista 1", tone: "square" },
+  { src: asset("/assets/hpu/catalog/mesa-centro-mosaico-2.webp"), title: "Mesa de centro con mosaico", detail: "Sala · vista 2", tone: "tall" },
+  { src: asset("/assets/hpu/catalog/consola-azul.webp"), title: "Consola azul", detail: "Mueble a medida · exhibición", tone: "wide" },
+  { src: asset("/assets/hpu/catalog/mesa-centro-mosaico-3.webp"), title: "Mesa de centro con mosaico", detail: "Sala · detalle de cubierta", tone: "square" },
+  { src: asset("/assets/hpu/catalog/barandal-decorativo.webp"), title: "Barandal decorativo", detail: "Herrería ornamental", tone: "tall" },
 ];
 
 export const contact = {
