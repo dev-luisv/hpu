@@ -33,44 +33,14 @@ export const categories = [
 
 export const products: CatalogItem[] = [
   {
-    id: "base-cama",
-    name: "Bases de cama",
-    eyebrow: "Dormitorio",
-    description: "Diseñadas a la medida de tu colchón, con líneas limpias y estructura sólida.",
+    id: "mesa-dorada",
+    name: "Mesa dorada con vidrio",
+    eyebrow: "A medida",
+    description: "Estructura metálica con acabado dorado y cubierta de vidrio.",
     price: "Cotizar",
-    category: "bases",
-    accent: "olive",
-    imageUrl: baseCamaFixed,
-  },
-  {
-    id: "mesa-centro",
-    name: "Mesas de centro",
-    eyebrow: "Sala",
-    description: "Proporciones pensadas para convivir con tu espacio, estilo y forma de vivir.",
-    price: "Cotizar",
-    category: "centro",
+    category: "medida",
     accent: "copper",
-    imageUrl: mesaCentroFixed,
-  },
-  {
-    id: "mesa-comedor",
-    name: "Mesas de comedor",
-    eyebrow: "Comedor",
-    description: "Una pieza central para reunir personas, materiales y momentos.",
-    price: "Cotizar",
-    category: "comedor",
-    accent: "stone",
-    imageUrl: mesaComedorFixed,
-  },
-  {
-    id: "lampara-metal",
-    name: "Lámparas de metal",
-    eyebrow: "Iluminación",
-    description: "Detalles escultóricos que transforman la atmósfera sin perder funcionalidad.",
-    price: "Cotizar",
-    category: "lamparas",
-    accent: "ink",
-    imageUrl: lamparaMetalFixed,
+    imageUrl: asset("/assets/hpu-fixed/imported/01-mesa-dorada.webp"),
   },
   {
     id: "mesa-auxiliar-negra",
@@ -96,16 +66,21 @@ export const products: CatalogItem[] = [
     id: "mesa-centro-decorativa",
     name: "Mesa de centro decorativa",
     eyebrow: "Sala",
-    description: "Mesa de centro con cubierta de vidrio y trabajo metálico decorativo visible desde distintos ángulos.",
+    description: "Mesa de centro con cubierta de vidrio y trabajo metálico decorativo.",
     price: "Cotizar",
     category: "centro",
     accent: "copper",
     imageUrl: asset("/assets/hpu-fixed/imported/09-mesa-centro-ambiente.webp"),
-    imageUrls: [
-      asset("/assets/hpu-fixed/imported/08-mesa-centro-superior.webp"),
-      asset("/assets/hpu-fixed/imported/09-mesa-centro-ambiente.webp"),
-      asset("/assets/hpu-fixed/imported/10-mesa-centro-detalle.webp"),
-    ],
+  },
+  {
+    id: "consola-azul",
+    name: "Consola azul",
+    eyebrow: "A medida",
+    description: "Consola metálica con acabado azul, cubierta de vidrio y repisa inferior.",
+    price: "Cotizar",
+    category: "medida",
+    accent: "ink",
+    imageUrl: asset("/assets/hpu-fixed/imported/11-consola-azul.webp"),
   },
 ];
 
@@ -122,10 +97,8 @@ export const projectPhotos: ProjectPhoto[] = [
   { src: asset("/assets/hpu-fixed/projects/rueda-botanica.webp"), title: "Rueda botánica", detail: "Metal convertido en detalle", tone: "wide" },
   { src: asset("/assets/hpu-fixed/projects/sillon-tejido.webp"), title: "Sillón tejido", detail: "Estructura y comodidad", tone: "square" },
 
-  { src: asset("/assets/hpu-fixed/imported/01-mesa-dorada.webp"), title: "Mesa dorada con vidrio", detail: "Pieza especial · fabricación a medida", tone: "wide" },
   { src: asset("/assets/hpu-fixed/imported/03-cruz-metal.webp"), title: "Cruz de metal", detail: "Pieza decorativa", tone: "tall" },
   { src: asset("/assets/hpu-fixed/imported/07-mesa-dorada-floral.webp"), title: "Estructura dorada floral", detail: "Proyecto especial · montaje decorativo", tone: "wide" },
-  { src: asset("/assets/hpu-fixed/imported/11-consola-azul.webp"), title: "Consola azul", detail: "Mueble a medida", tone: "square" },
 ];
 
 export const contact = {
