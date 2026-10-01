@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent, type SyntheticEvent } from "react";
 import {
   ArrowDown,
+  ArrowLeft,
   ArrowUpRight,
   Check,
   ChevronRight,
@@ -160,7 +161,10 @@ export default function Home() {
           {activeCategory && <div id="catalog-products" className="catalog-products-panel">
             <div className="catalog-products-heading">
               <div><p className="eyebrow">Colección</p><h3>{liveCategories.find((category) => category.id === activeCategory)?.label}</h3></div>
-              <button type="button" className="catalog-back" onClick={() => setActiveCategory(null)}>← Volver a categorías</button>
+              <button type="button" className="catalog-back" onClick={() => setActiveCategory(null)} aria-label="Volver a todas las categorías">
+                <span className="catalog-back-icon"><ArrowLeft size={18} strokeWidth={2} /></span>
+                <span className="catalog-back-copy"><small>Catálogo</small><strong>Ver todas las categorías</strong></span>
+              </button>
             </div>
             {filteredProducts.length > 0 ? <div className="product-grid">{filteredProducts.map((product, index) => <article className={`product-card product-card--${product.accent}`} key={product.id}><div className="product-top"><span className="product-number">0{index + 1}</span><span className="product-price">{formatPrice(product.price)}</span></div>{product.imageUrl ? <button className="product-image image-trigger" type="button" onClick={() => openImage(product.imageUrl!, product.name, product.description)} aria-label={`Ampliar foto de ${product.name}`}><img src={product.imageUrl} alt={product.name} loading="lazy" onError={keepImageVisible} /><span className="image-zoom-hint"><Maximize2 size={14} /> Ampliar</span></button> : <div className="product-icon"><div className="icon-frame"><span className="icon-line icon-line--one" /><span className="icon-line icon-line--two" /><span className="icon-dot" /></div></div>}<div className="product-info"><p className="eyebrow">{product.eyebrow}</p><h3>{product.name}</h3><p>{product.description}</p><p className="product-price-visible"><strong>Precio:</strong> {formatPrice(product.price)}</p><a href={contact.whatsappHref} target="_blank" rel="noreferrer" className="product-link">Solicitar información <ChevronRight size={16} /></a></div></article>)}</div> : <div className="catalog-empty"><strong>Aún no hay productos cargados en esta categoría.</strong><span>Cuando agreguemos fotografías de productos, aparecerán aquí sin repetir la imagen de portada.</span></div>}
           </div>}
