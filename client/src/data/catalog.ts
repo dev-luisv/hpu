@@ -36,7 +36,7 @@ export const products: CatalogItem[] = [
     price: "Cotizar",
     category: "bases",
     accent: "stone",
-    imageUrl: asset("/assets/hpu-fixed/catalog/base-cama-metal-negra.webp"),
+    imageUrl: asset("/assets/hpu-fixed/catalog/base-cama-metal-negra-v2.webp"),
   },
   {
     id: "mesa-auxiliar-negra",
