@@ -3,6 +3,7 @@ import {
   ArrowDown,
   ArrowUpRight,
   Check,
+  ChevronLeft,
   ChevronRight,
   Maximize2,
   MapPin,
@@ -12,7 +13,7 @@ import {
   X,
 } from "lucide-react";
 import { categories, contact, products, projectPhotos } from "@/data/catalog";
-import { heroFixed } from "@/assets/hpu-fixed/fixedImages";
+import { trpc } from "@/lib/trpc";
 
 function keepImageVisible(event: SyntheticEvent<HTMLImageElement>) {
   const image = event.currentTarget;
@@ -20,7 +21,7 @@ function keepImageVisible(event: SyntheticEvent<HTMLImageElement>) {
   image.dataset.fallback = "true";
   image.src = image.src.includes("-upscaled.webp")
     ? image.src.replace("-upscaled.webp", "-enhanced.jpg")
-    : `${import.meta.env.BASE_URL}assets/hpu/facebook-7-enhanced.jpg`;
+    : "/assets/hpu/facebook-7-enhanced.jpg";
 }
 
 function formatPrice(value: string) {
@@ -53,12 +54,21 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [sent, setSent] = useState(false);
   const [lightbox, setLightbox] = useState<{ src: string; title: string; detail?: string } | null>(null);
-  const liveCategories = categories;
-  const liveProducts = products;
-  const heroImage = heroFixed;
-  const customImage = `${import.meta.env.BASE_URL}assets/hpu/facebook-6-upscaled.webp`;
-  const showroomImage = `${import.meta.env.BASE_URL}assets/hpu/facebook-1-upscaled.webp`;
-  const liveProjectPhotos = projectPhotos;
+  const catalogQuery = trpc.catalog.public.useQuery(undefined, { retry: false });
+  const liveCategories = catalogQuery.data?.categories?.length
+    ? catalogQuery.data.categories.map((category) => ({ id: category.slug, label: category.label, number: category.number, note: category.note }))
+    : categories;
+  const liveProducts = catalogQuery.data?.items?.length
+    ? catalogQuery.data.items.map((item) => ({ id: String(item.id), slug: item.slug, name: item.name, eyebrow: item.eyebrow, description: item.description, price: item.priceLabel, category: item.categorySlug, accent: item.accent, imageUrl: item.imageUrl }))
+    : products;
+  const liveMedia = catalogQuery.data?.media ?? [];
+  const heroImage = liveMedia.find((asset) => asset.slot === "hero")?.url ?? "/assets/hpu/facebook-7-upscaled.webp";
+  const customImage = liveMedia.find((asset) => asset.slot === "custom")?.url ?? "/assets/hpu/facebook-6-upscaled.webp";
+  const showroomImage = liveMedia.find((asset) => asset.slot === "showroom")?.url ?? "/assets/hpu/facebook-1-upscaled.webp";
+  const galleryMedia = liveMedia.filter((asset) => asset.slot.startsWith("project-") && asset.isPublished === 1);
+  const liveProjectPhotos = galleryMedia.length
+    ? galleryMedia.map((asset, index) => ({ src: asset.url, title: asset.title, detail: asset.detail, tone: index % 3 === 0 ? "wide" : index % 3 === 1 ? "tall" : "square", cutout: asset.url.includes("-cutout"), softened: asset.url.includes("gallery-") && !asset.url.includes("lamparas") }))
+    : projectPhotos;
   const primaryProductSlugs = new Set(["base-cama", "mesa-centro", "mesa-comedor", "lampara-metal"]);
   const filteredProducts = activeCategory === "Todos"
     ? liveProducts.filter((product) => primaryProductSlugs.has(String("slug" in product ? product.slug : product.id)))
@@ -113,8 +123,10 @@ export default function Home() {
           <div className="hero-visual">
             <div className="hero-image-frame">
               <button className="image-trigger image-trigger--hero" type="button" onClick={() => openImage(heroImage, "Portada HPU", "Sillón de metal · imagen principal")} aria-label="Ampliar imagen de portada"><img src={heroImage} alt="Sillón de metal tejido fabricado por HPU" onError={keepImageVisible} /><span className="image-zoom-hint"><Maximize2 size={15} /> Ver imagen</span></button>
+              <div className="image-stamp"><span>HPU</span><small>DESDE<br />EL TALLER</small></div>
             </div>
             <div className="hero-side-note"><span className="vertical-label">TUS SUEÑOS EN METAL</span><span className="side-rule" /></div>
+            <div className="hero-index">01 <span>/</span> 04</div>
           </div>
         </div>
         <div className="hero-bottom container"><span>Desliza para descubrir</span><span className="hero-bottom-line" /><span>MX · QRO</span></div>
@@ -131,7 +143,7 @@ export default function Home() {
       <section id="catalogo" className="catalog-section section-paper">
         <div className="container">
           <div className="section-heading section-heading--split"><div><p className="eyebrow"><span className="eyebrow-line" /> Colección actual</p><h2>Piezas para<br /><em>habitar.</em></h2></div><p className="section-intro">Una selección de muebles pensados para durar, convivir y contar algo de ti. Explora nuestras categorías o escríbenos para comenzar un diseño propio.</p></div>
-          <div className="category-tabs" role="tablist" aria-label="Filtrar catálogo"><button className={activeCategory === "Todos" ? "is-active" : ""} onClick={() => setActiveCategory("Todos")}>Todos <span>{String(primaryProductSlugs.size).padStart(2, "0")}</span></button>{liveCategories.slice(0, 4).map((category) => <button key={category.id} className={activeCategory === category.id ? "is-active" : ""} onClick={() => setActiveCategory(category.id)}>{category.label} <span>{category.number}</span></button>)}</div>
+          <div className="category-tabs" role="tablist" aria-label="Filtrar catálogo"><button className={activeCategory === "Todos" ? "is-active" : ""} onClick={() => setActiveCategory("Todos")}>Todos <span>{String(primaryProductSlugs.size).padStart(2, "0")}</span></button>{liveCategories.map((category) => <button key={category.id} className={activeCategory === category.id ? "is-active" : ""} onClick={() => setActiveCategory(category.id)}>{category.label} <span>{category.number}</span></button>)}</div>
           <div className="product-grid">{filteredProducts.map((product, index) => <article className={`product-card product-card--${product.accent}`} key={product.id}><div className="product-top"><span className="product-number">0{index + 1}</span><span className="product-price">{formatPrice(product.price)}</span></div>{product.imageUrl ? <button className="product-image image-trigger" type="button" onClick={() => openImage(product.imageUrl!, product.name, product.description)} aria-label={`Ampliar foto de ${product.name}`}><img src={product.imageUrl} alt={product.name} loading="lazy" onError={keepImageVisible} /><span className="image-zoom-hint"><Maximize2 size={14} /> Ampliar</span></button> : <div className="product-icon"><div className="icon-frame"><span className="icon-line icon-line--one" /><span className="icon-line icon-line--two" /><span className="icon-dot" /></div></div>}<div className="product-info"><p className="eyebrow">{product.eyebrow}</p><h3>{product.name}</h3><p>{product.description}</p><p className="product-price-visible"><strong>Precio:</strong> {formatPrice(product.price)}</p><a href={contact.whatsappHref} target="_blank" rel="noreferrer" className="product-link">Solicitar información <ChevronRight size={16} /></a></div></article>)}</div>
           <div className="catalog-foot"><span>Precios y medidas disponibles bajo cotización.</span><WhatsAppButton label="Cuéntanos qué buscas" secondary /></div>
         </div>

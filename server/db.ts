@@ -89,7 +89,7 @@ export async function seedCatalogIfNeeded() {
   }
   const productCount = await db.select({ value: count() }).from(catalogItems);
   if (Number(productCount[0]?.value ?? 0) === 0) {
-    await db.insert(catalogItems).values(DEFAULT_PRODUCTS.map(product => ({ ...product, imageUrl: null, isPublished: 1 })));
+    await db.insert(catalogItems).values(DEFAULT_PRODUCTS.map(product => ({ ...product, isPublished: 1 })));
   }
   const mediaCount = await db.select({ value: count() }).from(mediaAssets);
   if (Number(mediaCount[0]?.value ?? 0) === 0) {
