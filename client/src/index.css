@@ -168,3 +168,20 @@
   .catalog-category-grid{grid-template-columns:1fr}
   .catalog-category-image{height:230px}
 }
+
+.catalog-empty{
+  padding:44px 28px;
+  border:1px dashed rgba(32,33,31,.2);
+  background:var(--paper);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.catalog-empty strong{
+  font:600 28px/1.05 var(--serif);
+}
+.catalog-empty span{
+  max-width:560px;
+  color:var(--muted);
+  font-size:11px;
+}
