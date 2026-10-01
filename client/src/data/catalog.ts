@@ -14,6 +14,7 @@ export type ProjectPhoto = {
   title: string;
   detail: string;
   tone: string;
+  group: "Muebles" | "Decoración" | "Iluminación" | "Estructuras";
   cutout?: boolean;
   softened?: boolean;
 };
@@ -156,29 +157,29 @@ export const products: CatalogItem[] = [
 ];
 
 export const projectPhotos: ProjectPhoto[] = [
-  { src: asset("/assets/hpu-fixed/projects/repisa-circular.png"), title: "Repisa circular", detail: "Metal con presencia", tone: "wide" },
-  { src: asset("/assets/hpu-fixed/projects/detalle-madera-metal.png"), title: "Detalle de madera y metal", detail: "Acabados y contraste", tone: "square" },
-  { src: asset("/assets/hpu-fixed/projects/cruz-decorativa.png"), title: "Cruz decorativa", detail: "Pieza especial", tone: "tall" },
-  { src: asset("/assets/hpu-fixed/projects/jardineras.webp"), title: "Jardineras", detail: "Piezas para exterior", tone: "wide" },
-  { src: asset("/assets/hpu-fixed/projects/estructura-colorida.png"), title: "Estructura colorida", detail: "Trabajo especial", tone: "square" },
-  { src: asset("/assets/hpu-fixed/projects/lamparas-geometricas.png"), title: "Lámparas geométricas", detail: "Iluminación decorativa", tone: "tall" },
-  { src: asset("/assets/hpu-fixed/projects/pieza-exhibicion.webp"), title: "Pieza de exhibición", detail: "Fabricación a medida", tone: "square" },
-  { src: asset("/assets/hpu-fixed/projects/arte-metal.webp"), title: "Arte en metal", detail: "Diseño y oficio", tone: "tall" },
-  { src: asset("/assets/hpu-fixed/projects/soportes.webp"), title: "Soportes", detail: "Composición y equilibrio", tone: "square" },
-  { src: asset("/assets/hpu-fixed/projects/rueda-botanica.webp"), title: "Rueda botánica", detail: "Metal convertido en detalle", tone: "wide" },
-  { src: asset("/assets/hpu-fixed/projects/sillon-tejido.webp"), title: "Sillón tejido", detail: "Estructura y comodidad", tone: "square" },
-  { src: asset("/assets/hpu/catalog/consola-dorada.webp"), title: "Consola dorada", detail: "Herrería y vidrio · recibidor", tone: "wide" },
-  { src: asset("/assets/hpu/catalog/mesa-auxiliar-madera.webp"), title: "Mesa auxiliar de madera", detail: "Metal y madera · sala", tone: "square" },
-  { src: asset("/assets/hpu/catalog/cruz-madera-metal.webp"), title: "Cruz de madera y metal", detail: "Decoración artesanal", tone: "tall" },
-  { src: asset("/assets/hpu/catalog/mesa-comedor-negra.webp"), title: "Mesa de comedor negra", detail: "Comedor · estructura HPU", tone: "wide" },
-  { src: asset("/assets/hpu/catalog/aplique-metal-1.webp"), title: "Aplique de metal", detail: "Iluminación artesanal · vista 1", tone: "square" },
-  { src: asset("/assets/hpu/catalog/aplique-metal-2.webp"), title: "Aplique de metal", detail: "Iluminación artesanal · vista 2", tone: "tall" },
-  { src: asset("/assets/hpu/catalog/estructura-evento-dorada.webp"), title: "Estructura para eventos", detail: "Herrería decorativa · exterior", tone: "wide" },
-  { src: asset("/assets/hpu/catalog/mesa-centro-mosaico-1.webp"), title: "Mesa de centro con mosaico", detail: "Sala · vista 1", tone: "square" },
-  { src: asset("/assets/hpu/catalog/mesa-centro-mosaico-2.webp"), title: "Mesa de centro con mosaico", detail: "Sala · vista 2", tone: "tall" },
-  { src: asset("/assets/hpu/catalog/consola-azul.webp"), title: "Consola azul", detail: "Mueble a medida · exhibición", tone: "wide" },
-  { src: asset("/assets/hpu/catalog/mesa-centro-mosaico-3.webp"), title: "Mesa de centro con mosaico", detail: "Sala · detalle de cubierta", tone: "square" },
-  { src: asset("/assets/hpu/catalog/barandal-decorativo.webp"), title: "Barandal decorativo", detail: "Herrería ornamental", tone: "tall" },
+  { src: asset("/assets/hpu-fixed/projects/repisa-circular.png"), title: "Repisa circular", detail: "Metal con presencia", tone: "wide", group: "Muebles" },
+  { src: asset("/assets/hpu-fixed/projects/detalle-madera-metal.png"), title: "Detalle de madera y metal", detail: "Acabados y contraste", tone: "square", group: "Muebles" },
+  { src: asset("/assets/hpu-fixed/projects/cruz-decorativa.png"), title: "Cruz decorativa", detail: "Pieza especial", tone: "tall", group: "Decoración" },
+  { src: asset("/assets/hpu-fixed/projects/jardineras.webp"), title: "Jardineras", detail: "Piezas para exterior", tone: "wide", group: "Decoración" },
+  { src: asset("/assets/hpu-fixed/projects/estructura-colorida.png"), title: "Estructura colorida", detail: "Trabajo especial", tone: "square", group: "Estructuras" },
+  { src: asset("/assets/hpu-fixed/projects/lamparas-geometricas.png"), title: "Lámparas geométricas", detail: "Iluminación decorativa", tone: "tall", group: "Iluminación" },
+  { src: asset("/assets/hpu-fixed/projects/pieza-exhibicion.webp"), title: "Pieza de exhibición", detail: "Fabricación a medida", tone: "square", group: "Estructuras" },
+  { src: asset("/assets/hpu-fixed/projects/arte-metal.webp"), title: "Arte en metal", detail: "Diseño y oficio", tone: "tall", group: "Decoración" },
+  { src: asset("/assets/hpu-fixed/projects/soportes.webp"), title: "Soportes", detail: "Composición y equilibrio", tone: "square", group: "Estructuras" },
+  { src: asset("/assets/hpu-fixed/projects/rueda-botanica.webp"), title: "Rueda botánica", detail: "Metal convertido en detalle", tone: "wide", group: "Decoración" },
+  { src: asset("/assets/hpu-fixed/projects/sillon-tejido.webp"), title: "Sillón tejido", detail: "Estructura y comodidad", tone: "square", group: "Muebles" },
+  { src: asset("/assets/hpu/catalog/consola-dorada.webp"), title: "Consola dorada", detail: "Herrería y vidrio · recibidor", tone: "wide", group: "Muebles" },
+  { src: asset("/assets/hpu/catalog/mesa-auxiliar-madera.webp"), title: "Mesa auxiliar de madera", detail: "Metal y madera · sala", tone: "square", group: "Muebles" },
+  { src: asset("/assets/hpu/catalog/cruz-madera-metal.webp"), title: "Cruz de madera y metal", detail: "Decoración artesanal", tone: "tall", group: "Decoración" },
+  { src: asset("/assets/hpu/catalog/mesa-comedor-negra.webp"), title: "Mesa de comedor negra", detail: "Comedor · estructura HPU", tone: "wide", group: "Muebles" },
+  { src: asset("/assets/hpu/catalog/aplique-metal-1.webp"), title: "Aplique de metal", detail: "Iluminación artesanal · vista 1", tone: "square", group: "Iluminación" },
+  { src: asset("/assets/hpu/catalog/aplique-metal-2.webp"), title: "Aplique de metal", detail: "Iluminación artesanal · vista 2", tone: "tall", group: "Iluminación" },
+  { src: asset("/assets/hpu/catalog/estructura-evento-dorada.webp"), title: "Estructura para eventos", detail: "Herrería decorativa · exterior", tone: "wide", group: "Estructuras" },
+  { src: asset("/assets/hpu/catalog/mesa-centro-mosaico-1.webp"), title: "Mesa de centro con mosaico", detail: "Sala · vista 1", tone: "square", group: "Muebles" },
+  { src: asset("/assets/hpu/catalog/mesa-centro-mosaico-2.webp"), title: "Mesa de centro con mosaico", detail: "Sala · vista 2", tone: "tall", group: "Muebles" },
+  { src: asset("/assets/hpu/catalog/consola-azul.webp"), title: "Consola azul", detail: "Mueble a medida · exhibición", tone: "wide", group: "Muebles" },
+  { src: asset("/assets/hpu/catalog/mesa-centro-mosaico-3.webp"), title: "Mesa de centro con mosaico", detail: "Sala · detalle de cubierta", tone: "square", group: "Muebles" },
+  { src: asset("/assets/hpu/catalog/barandal-decorativo.webp"), title: "Barandal decorativo", detail: "Herrería ornamental", tone: "tall", group: "Estructuras" },
 ];
 
 export const contact = {
