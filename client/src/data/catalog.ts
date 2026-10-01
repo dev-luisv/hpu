@@ -18,7 +18,7 @@ export type ProjectPhoto = {
   softened?: boolean;
 };
 
-const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\\/+/, "")}`;
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
 /**
  * Edita este archivo para cambiar nombres, textos, precios y fotografías del catálogo.
