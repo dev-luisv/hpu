@@ -9,6 +9,7 @@ export type CatalogItem = {
   category: string;
   accent: string;
   imageUrl?: string | null;
+  imageUrls?: string[];
 };
 
 export type ProjectPhoto = {
@@ -20,10 +21,8 @@ export type ProjectPhoto = {
   softened?: boolean;
 };
 
-/**
- * Edita este archivo para cambiar nombres, textos, precios y fotografías del catálogo.
- * Los precios pueden quedarse como "Cotizar" o "Próximamente" mientras se definen.
- */
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+
 export const categories = [
   { id: "bases", label: "Bases de cama", number: "01", note: "Estructuras que sostienen el descanso." },
   { id: "centro", label: "Mesas de centro", number: "02", note: "Piezas que le dan ritmo a la sala." },
@@ -73,9 +72,42 @@ export const products: CatalogItem[] = [
     accent: "ink",
     imageUrl: lamparaMetalFixed,
   },
+  {
+    id: "mesa-auxiliar-negra",
+    name: "Mesa auxiliar negra",
+    eyebrow: "Sala",
+    description: "Mesa auxiliar de metal negro con cubierta de madera para complementar la sala.",
+    price: "Cotizar",
+    category: "centro",
+    accent: "ink",
+    imageUrl: asset("/assets/hpu-fixed/imported/02-mesa-auxiliar-negra.webp"),
+  },
+  {
+    id: "mesa-comedor-contemporanea",
+    name: "Mesa de comedor contemporánea",
+    eyebrow: "Comedor",
+    description: "Estructura metálica negra y cubierta clara para un comedor de líneas limpias.",
+    price: "Cotizar",
+    category: "comedor",
+    accent: "stone",
+    imageUrl: asset("/assets/hpu-fixed/imported/04-mesa-comedor.webp"),
+  },
+  {
+    id: "mesa-centro-decorativa",
+    name: "Mesa de centro decorativa",
+    eyebrow: "Sala",
+    description: "Mesa de centro con cubierta de vidrio y trabajo metálico decorativo visible desde distintos ángulos.",
+    price: "Cotizar",
+    category: "centro",
+    accent: "copper",
+    imageUrl: asset("/assets/hpu-fixed/imported/09-mesa-centro-ambiente.webp"),
+    imageUrls: [
+      asset("/assets/hpu-fixed/imported/08-mesa-centro-superior.webp"),
+      asset("/assets/hpu-fixed/imported/09-mesa-centro-ambiente.webp"),
+      asset("/assets/hpu-fixed/imported/10-mesa-centro-detalle.webp"),
+    ],
+  },
 ];
-
-const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
 
 export const projectPhotos: ProjectPhoto[] = [
   { src: asset("/assets/hpu-fixed/projects/repisa-circular.png"), title: "Repisa circular", detail: "Metal con presencia", tone: "wide" },
@@ -89,6 +121,11 @@ export const projectPhotos: ProjectPhoto[] = [
   { src: asset("/assets/hpu-fixed/projects/soportes.webp"), title: "Soportes", detail: "Composición y equilibrio", tone: "square" },
   { src: asset("/assets/hpu-fixed/projects/rueda-botanica.webp"), title: "Rueda botánica", detail: "Metal convertido en detalle", tone: "wide" },
   { src: asset("/assets/hpu-fixed/projects/sillon-tejido.webp"), title: "Sillón tejido", detail: "Estructura y comodidad", tone: "square" },
+
+  { src: asset("/assets/hpu-fixed/imported/01-mesa-dorada.webp"), title: "Mesa dorada con vidrio", detail: "Pieza especial · fabricación a medida", tone: "wide" },
+  { src: asset("/assets/hpu-fixed/imported/03-cruz-metal.webp"), title: "Cruz de metal", detail: "Pieza decorativa", tone: "tall" },
+  { src: asset("/assets/hpu-fixed/imported/07-mesa-dorada-floral.webp"), title: "Estructura dorada floral", detail: "Proyecto especial · montaje decorativo", tone: "wide" },
+  { src: asset("/assets/hpu-fixed/imported/11-consola-azul.webp"), title: "Consola azul", detail: "Mueble a medida", tone: "square" },
 ];
 
 export const contact = {
