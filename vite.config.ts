@@ -44,11 +44,12 @@ function fixedImportedImages(): Plugin {
   const zipPath = path.join(publicDir, "assets", "hpu-fixed", "imported-images.zip");
   const destination = path.join(publicDir, "assets", "hpu-fixed", "imported");
 
+  // Extract immediately while loading the Vite config so publicDir already contains
+  // the fixed images before Vite copies it into the build output.
+  extractStoredZip(zipPath, destination);
+
   return {
     name: "hpu-fixed-imported-images",
-    buildStart() {
-      extractStoredZip(zipPath, destination);
-    },
     configureServer() {
       extractStoredZip(zipPath, destination);
     },
