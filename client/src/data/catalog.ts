@@ -29,6 +29,16 @@ export const categories = [
 
 export const products: CatalogItem[] = [
   {
+    id: "lampara-geometrica-triple",
+    name: "Lámpara geométrica triple",
+    eyebrow: "Iluminación",
+    description: "Lámpara colgante de metal con diseño geométrico y tres luminarias suspendidas.",
+    price: "Cotizar",
+    category: "lamparas",
+    accent: "ink",
+    imageUrl: asset("/assets/hpu-fixed/catalog/lampara-geometrica-triple-v1.avif"),
+  },
+  {
     id: "base-cama-metal-negra",
     name: "Base de cama de metal",
     eyebrow: "Dormitorio",
