@@ -1,11 +1,63 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+import fs from "node:fs";
 import path from "node:path";
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
+
+function extractStoredZip(zipPath: string, destination: string) {
+  if (!fs.existsSync(zipPath)) return;
+  fs.mkdirSync(destination, { recursive: true });
+
+  const data = fs.readFileSync(zipPath);
+  let offset = 0;
+
+  while (offset + 30 <= data.length) {
+    if (data.readUInt32LE(offset) !== 0x04034b50) break;
+
+    const flags = data.readUInt16LE(offset + 6);
+    const method = data.readUInt16LE(offset + 8);
+    const compressedSize = data.readUInt32LE(offset + 18);
+    const fileNameLength = data.readUInt16LE(offset + 26);
+    const extraLength = data.readUInt16LE(offset + 28);
+
+    if (flags & 0x08) throw new Error("Unsupported ZIP data descriptor");
+    if (method !== 0) throw new Error("Image bundle must use ZIP_STORED");
+
+    const nameStart = offset + 30;
+    const nameEnd = nameStart + fileNameLength;
+    const fileName = data.subarray(nameStart, nameEnd).toString("utf8");
+    const dataStart = nameEnd + extraLength;
+    const dataEnd = dataStart + compressedSize;
+
+    if (!fileName.endsWith("/")) {
+      const output = path.join(destination, fileName);
+      fs.mkdirSync(path.dirname(output), { recursive: true });
+      fs.writeFileSync(output, data.subarray(dataStart, dataEnd));
+    }
+
+    offset = dataEnd;
+  }
+}
+
+function fixedImportedImages(): Plugin {
+  const publicDir = path.resolve(import.meta.dirname, "client", "public");
+  const zipPath = path.join(publicDir, "assets", "hpu-fixed", "imported-images.zip");
+  const destination = path.join(publicDir, "assets", "hpu-fixed", "imported");
+
+  return {
+    name: "hpu-fixed-imported-images",
+    buildStart() {
+      extractStoredZip(zipPath, destination);
+    },
+    configureServer() {
+      extractStoredZip(zipPath, destination);
+    },
+  };
+}
 
 export default defineConfig({
   base: "/hpu/",
-  plugins: [react(), tailwindcss()],
+  plugins: [fixedImportedImages(), react(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
