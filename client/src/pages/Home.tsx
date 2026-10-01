@@ -143,21 +143,21 @@ export default function Home() {
       <section id="catalogo" className="catalog-section section-paper">
         <div className="container">
           <div className="section-heading section-heading--split"><div><p className="eyebrow"><span className="eyebrow-line" /> Colección actual</p><h2>Piezas para<br /><em>habitar.</em></h2></div><p className="section-intro">Una selección de muebles pensados para durar, convivir y contar algo de ti. Explora nuestras categorías o escríbenos para comenzar un diseño propio.</p></div>
-          <div className="catalog-category-grid">
+          {!activeCategory && <div className="catalog-category-grid">
             {liveCategories.map((category) => {
               const count = liveProducts.filter((product) => product.category === category.id).length;
-              return <button key={category.id} type="button" className={`catalog-category-card${activeCategory === category.id ? " is-active" : ""}`} onClick={() => selectCategory(category.id)}>
+              return <button key={category.id} type="button" className="catalog-category-card" onClick={() => selectCategory(category.id)}>
                 <div className="catalog-category-image"><img src={categoryCovers[category.id]} alt={category.label} onError={keepImageVisible} /></div>
-                <div className="catalog-category-copy"><span>{category.number}</span><h3>{category.label}</h3><p>{category.note}</p><small>{count} {count === 1 ? "producto" : "productos"} · Ver colección</small></div>
+                <div className="catalog-category-copy"><span>{category.number}</span><h3>{category.label}</h3><p>{category.note}</p><small>{count > 0 ? `${count} ${count === 1 ? "producto" : "productos"} · Ver colección` : "Ver categoría"}</small></div>
               </button>;
             })}
-          </div>
+          </div>}
           {activeCategory && <div id="catalog-products" className="catalog-products-panel">
             <div className="catalog-products-heading">
               <div><p className="eyebrow">Colección</p><h3>{liveCategories.find((category) => category.id === activeCategory)?.label}</h3></div>
               <button type="button" className="catalog-back" onClick={() => setActiveCategory(null)}>← Volver a categorías</button>
             </div>
-            <div className="product-grid">{filteredProducts.map((product, index) => <article className={`product-card product-card--${product.accent}`} key={product.id}><div className="product-top"><span className="product-number">0{index + 1}</span><span className="product-price">{formatPrice(product.price)}</span></div>{product.imageUrl ? <button className="product-image image-trigger" type="button" onClick={() => openImage(product.imageUrl!, product.name, product.description)} aria-label={`Ampliar foto de ${product.name}`}><img src={product.imageUrl} alt={product.name} loading="lazy" onError={keepImageVisible} /><span className="image-zoom-hint"><Maximize2 size={14} /> Ampliar</span></button> : <div className="product-icon"><div className="icon-frame"><span className="icon-line icon-line--one" /><span className="icon-line icon-line--two" /><span className="icon-dot" /></div></div>}<div className="product-info"><p className="eyebrow">{product.eyebrow}</p><h3>{product.name}</h3><p>{product.description}</p><p className="product-price-visible"><strong>Precio:</strong> {formatPrice(product.price)}</p><a href={contact.whatsappHref} target="_blank" rel="noreferrer" className="product-link">Solicitar información <ChevronRight size={16} /></a></div></article>)}</div>
+            {filteredProducts.length > 0 ? <div className="product-grid">{filteredProducts.map((product, index) => <article className={`product-card product-card--${product.accent}`} key={product.id}><div className="product-top"><span className="product-number">0{index + 1}</span><span className="product-price">{formatPrice(product.price)}</span></div>{product.imageUrl ? <button className="product-image image-trigger" type="button" onClick={() => openImage(product.imageUrl!, product.name, product.description)} aria-label={`Ampliar foto de ${product.name}`}><img src={product.imageUrl} alt={product.name} loading="lazy" onError={keepImageVisible} /><span className="image-zoom-hint"><Maximize2 size={14} /> Ampliar</span></button> : <div className="product-icon"><div className="icon-frame"><span className="icon-line icon-line--one" /><span className="icon-line icon-line--two" /><span className="icon-dot" /></div></div>}<div className="product-info"><p className="eyebrow">{product.eyebrow}</p><h3>{product.name}</h3><p>{product.description}</p><p className="product-price-visible"><strong>Precio:</strong> {formatPrice(product.price)}</p><a href={contact.whatsappHref} target="_blank" rel="noreferrer" className="product-link">Solicitar información <ChevronRight size={16} /></a></div></article>)}</div> : <div className="catalog-empty"><strong>Aún no hay productos cargados en esta categoría.</strong><span>Cuando agreguemos fotografías de productos, aparecerán aquí sin repetir la imagen de portada.</span></div>}
           </div>}
           <div className="catalog-foot"><span>Precios y medidas disponibles bajo cotización.</span><WhatsAppButton label="Cuéntanos qué buscas" secondary /></div>
         </div>
