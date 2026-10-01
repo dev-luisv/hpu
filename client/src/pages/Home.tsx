@@ -18,9 +18,14 @@ function keepImageVisible(event: SyntheticEvent<HTMLImageElement>) {
   const image = event.currentTarget;
   if (image.dataset.fallback) return;
   image.dataset.fallback = "true";
-  image.src = image.src.includes("-upscaled.webp")
-    ? image.src.replace("-upscaled.webp", "-enhanced.jpg")
-    : `${import.meta.env.BASE_URL}assets/hpu/facebook-7-enhanced.jpg`;
+
+  if (image.src.includes("-upscaled.webp")) {
+    image.src = image.src.replace("-upscaled.webp", "-enhanced.jpg");
+    return;
+  }
+
+  // Nunca sustituir una foto de producto por otra pieza distinta.
+  image.style.visibility = "hidden";
 }
 
 function formatPrice(value: string) {
