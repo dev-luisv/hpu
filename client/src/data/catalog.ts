@@ -29,6 +29,16 @@ export const categories = [
 
 export const products: CatalogItem[] = [
   {
+    id: "base-cama-metal-negra",
+    name: "Base de cama de metal",
+    eyebrow: "Dormitorio",
+    description: "Base de cama en metal negro con cabecera y piecera de diseño clásico.",
+    price: "Cotizar",
+    category: "bases",
+    accent: "stone",
+    imageUrl: asset("/assets/hpu-fixed/catalog/base-cama-metal-negra.webp"),
+  },
+  {
     id: "mesa-auxiliar-negra",
     name: "Mesa auxiliar negra",
     eyebrow: "Sala",
